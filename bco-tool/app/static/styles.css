@@ -284,6 +284,9 @@
         border-color: #007bff;
         background-color: #f8f9fa;
     }
+    .rounded-lg {
+        border-radius: 0.5rem;
+    }
     /* .lorem{
         content: '-';
     } */
