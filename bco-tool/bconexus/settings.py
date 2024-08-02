@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-x7=+*vd8iejsa-yq*6vmeohf8bj-m$jh7+9x)nv+-p7)o84)!5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -102,7 +102,7 @@ LOGGING = {
             "formatter": 'formatter_1',
             "class": "logging.handlers.RotatingFileHandler",
             "filename": "./Logs/user.log",
-            "maxBytes":10485760, 
+            "maxBytes":10485760,
             "backupCount":1
         },
     },

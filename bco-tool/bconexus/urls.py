@@ -91,6 +91,7 @@ urlpatterns = [
     path('export_dowload_bco', export_dowload_bco, name='export_dowload_bco'),
     path('export_bco_to_dnanexus', export_bco_to_dnanexus, name='export_bco_to_dnanexus'),
     path('export_to_bco_db', export_to_bco_db, name='export_to_bco_db'),
+    path('export_to_custom_bco_db', export_to_custom_bco_db, name='export_to_custom_bco_db'),
     path('search', search, name='search'),
     path('save_bco_editor',save_bco_editor, name='save_bco_editor'),
     path('validate_bco_editor',validate_bco_editor, name='validate_bco_editor'),

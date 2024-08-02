@@ -36,3 +36,4 @@ urllib3==1.26.10
 websocket-client==0.54.0
 xdg==5.1.1
 zipp==3.8.1
+tzdata==2024.1

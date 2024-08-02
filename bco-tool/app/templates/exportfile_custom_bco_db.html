@@ -1,0 +1,97 @@
+{% load static %}
+{% block file_uploader %}
+{% csrf_token %}
+<div
+  id="bco_custom_db_export_container"
+  class="modal"
+  role="dialog"
+  aria-labelledby="customBCOModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color: navy">
+        <h4 class="modal-title" id="customBCOModalLabel" style="color: white">
+          Custom BCO database
+        </h4>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          style="color: white"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row mb-2">
+          <div class="col-3 d-flex align-items-center">
+            <label for="bco_custom_db_url" class="mb-0">BCO DB URL</label>
+          </div>
+          <div class="col-9">
+            <input
+              type="text"
+              class="form-control rounded-lg"
+              id="bco_custom_db_url"
+              placeholder="url"
+            />
+          </div>
+        </div>
+        <div class="mb-2 text-left">
+            Credentials
+        </div>
+        <div id="credentials-container">
+          <div
+            class="mb-2"
+            style="
+              display: flex;
+              gap: 10px;
+            "
+          >
+            <input
+              type="text"
+              class="form-control rounded-lg"
+              placeholder="key"
+            />
+            <input
+              type="text"
+              class="form-control rounded-lg"
+              placeholder="value"
+            />
+            <button
+              type="button"
+              class="btn-remove-credential btn btn-outline-danger rounded-lg"
+            >
+              Remove
+            </button>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="btn-add-credential btn btn-outline-primary btn-block mb-2 rounded-lg"
+        >
+          Add
+        </button>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn rounded-lg"
+          data-dismiss="modal"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn-submit-custom-bco-db btn btn-primary rounded-lg"
+          disabled
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="{% static 'exportfile_custom_bco_db.js' %}"></script>
+{% endblock %}

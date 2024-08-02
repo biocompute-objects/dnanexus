@@ -5,6 +5,7 @@ import subprocess
 from collections import OrderedDict
 
 from app.services.bco_db import BcoDB
+from app.services.custom_bco_db import CustomBcoDB
 from app.services.cwl import CWL
 from app.services.dataservices.bco_data_service import \
     BcoDataService, ComparisonBcoDataService
@@ -20,7 +21,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
-from django.http import HttpResponse, JsonResponse, QueryDict
+from django.http import HttpResponse, HttpResponseNotAllowed, HttpResponseServerError, JsonResponse, QueryDict
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_protect
 from script import CompileWorkflow
@@ -1286,6 +1287,25 @@ def export_to_bco_db(request):
                 return HttpResponse(status=400)
     except Exception as e:
         return HttpResponse(status=400)
+
+def export_to_custom_bco_db(request) -> HttpResponse:
+    if request.method != "POST":
+        return HttpResponseNotAllowed(permitted_methods="POST")
+
+    try:
+        # create biocompute_export.json file
+        create_export_bco()
+
+        # get request data
+        requestData = json.loads(request.body) 
+        url = requestData.get("url")
+        credentials = requestData.get("credentials")
+
+        # call request
+        response = CustomBcoDB(host_url=url, credentials=credentials).upload()
+        return HttpResponse(status=response.get("code"), content=response.get("message"))
+    except Exception as e:
+        return HttpResponseServerError()
 
 def save_bco_editor(request):
     try:

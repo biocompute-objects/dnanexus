@@ -522,6 +522,9 @@ $(document).ready(function() {
             $("#user_token").val("")
             $('#bco_db_export_container').modal('show')
         }
+        else if (export_option == "Custom BCO DB") {
+            $('#bco_custom_db_export_container').modal('show');
+        }
         else if (export_option=="PFDA BCO File"){
             $("#pfda_export_space_selector_div").css("visibility", "hidden")
             $("#pfda_export_folder_selector_div").css("visibility", "hidden")
